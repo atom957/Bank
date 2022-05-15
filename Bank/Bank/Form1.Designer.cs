@@ -42,6 +42,7 @@ namespace Bank
             this.kwotaOperacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonStats = new System.Windows.Forms.Button();
+            this.buttonLokaty = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.operationsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,11 +184,22 @@ namespace Bank
             this.buttonStats.UseVisualStyleBackColor = true;
             this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
             // 
+            // buttonLokaty
+            // 
+            this.buttonLokaty.Location = new System.Drawing.Point(264, 182);
+            this.buttonLokaty.Name = "buttonLokaty";
+            this.buttonLokaty.Size = new System.Drawing.Size(75, 118);
+            this.buttonLokaty.TabIndex = 11;
+            this.buttonLokaty.Text = "Lokaty";
+            this.buttonLokaty.UseVisualStyleBackColor = true;
+            this.buttonLokaty.Click += new System.EventHandler(this.buttonLokaty_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 942);
+            this.Controls.Add(this.buttonLokaty);
             this.Controls.Add(this.buttonStats);
             this.Controls.Add(this.operationsTable);
             this.Controls.Add(this.buttonBackToLogin);
@@ -222,6 +234,7 @@ namespace Bank
         private System.Windows.Forms.DataGridViewTextBoxColumn kwotaOperacji;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldo;
         private System.Windows.Forms.Button buttonStats;
+        private System.Windows.Forms.Button buttonLokaty;
     }
 }
 

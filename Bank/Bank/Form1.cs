@@ -14,14 +14,30 @@ namespace Bank
     public partial class Form1 : Form
     {
 
-        public Form1(string wplik, BankAccount account , string scieszkaPlik)
+        public Form1(string wplik, BankAccount account, string scieszkaPlik)
         {
             InitializeComponent();
             scieszkaP = scieszkaPlik;
             nplik = wplik;
             bank_acount = account;
             Operations operations = new Operations();
-            string[] z = File.ReadAllLines(scieszkaPlik + wplik);
+            Logowanie logowanie1 = new Logowanie();
+            string[] z = File.ReadAllLines(scieszkaPlik + "\\" + wplik);
+            logowanie1.Visible = false;
+            //if (z[1] != haslo)
+            //{
+
+            //    Logowanie logowanie = new Logowanie();
+            //    if (log == null || (logowanie != null && !logowanie.Visible))
+            //    {
+            //        logowanie.Show();
+            //        log = logowanie;
+            //    }
+            //    MessageBox.Show("Niepoprawne haslo");
+            //    this.Visible = false;
+            //    return;
+
+            //}
             // inicjowanie back-endu (obiektów)
             if (z[0].Split(" ")[1] == "podstawowe")
             {
@@ -42,14 +58,17 @@ namespace Bank
             int i = 0;
             foreach (string item in z)
             {
-                if (i != 0)
+                if (i != 0 && i != 1 && item.Trim().Length != 0)
                 {
                     string[] e = item.Split(" ");
                     label1.Text = e[e.Length - 1];
-                    string[] row = {e[0]+" "+ e[1],e[2],e[4] };
-                    operationsTable.Rows.Add(row);
-                    account.balance = double.Parse(label1.Text);
-                    operations.add(item);
+                    if (e.Length > 2)
+                    {
+                        string[] row = { e[0], e[1], e[3] };
+                        operationsTable.Rows.Add(row);
+                        account.balance = double.Parse(label1.Text);
+                        operations.add(item);
+                    }
                 }
                 i++;
             }
@@ -60,8 +79,10 @@ namespace Bank
             //operationsTable.Rows.Add(row2);
             //operationsTable.Rows.Add(row3);
             account.operations = operations;
+            opera = operations;
             statystyki = new Statystyki(operations);
         }
+        Operations opera;
         Statystyki statystyki;
         string scieszkaP;
         string nplik;
@@ -73,12 +94,12 @@ namespace Bank
         Controller2 contr = new Controller2();
         private void saveFile()
         {
-            string createText = typeof(BankAccountPremium).IsInstanceOfType(bank_acount) ? "bank: premium\n" : "bank: podstawowe\n";
-            foreach (string item in bank_acount.operations.bankoper)
-            {
-                createText += (item + "\n");
-            }
-            File.WriteAllText(scieszkaP + "\\" + nplik, createText);
+            //string createText = typeof(BankAccountPremium).IsInstanceOfType(bank_acount) ? "bank: premium\n" : "bank: podstawowe\n";
+            //foreach (string item in bank_acount.operations.bankoper)
+            //{
+            //    createText += (item + "\n");
+            //}
+            File.AppendAllText(scieszkaP + "\\" + nplik, bank_acount.operations.bankoper[bank_acount.operations.bankoper.Count - 1] + "\n");
             //File.AppendAllText(scieszkaP + nplik,createText);
         }
         private void button1_Click(object sender, EventArgs e)
@@ -130,7 +151,7 @@ namespace Bank
                         label1.Text = bank_acount.balance.ToString();
                     }
                 }
-                string[] row = {"wplata", textBox1.Text, bank_acount.balance.ToString() };
+                string[] row = { "wplata", textBox1.Text, bank_acount.balance.ToString() };
                 operationsTable.Rows.Add(row);
                 saveFile();
             }
@@ -168,7 +189,7 @@ namespace Bank
         private void buttonBackToLogin_Click(object sender, EventArgs e)
         {
             Logowanie logowanie = new Logowanie();
-            if (log == null||(logowanie != null && !logowanie.Visible))
+            if (log == null || (logowanie != null && !logowanie.Visible))
             {
                 logowanie.Show();
                 log = logowanie;
@@ -178,7 +199,14 @@ namespace Bank
 
         private void buttonStats_Click(object sender, EventArgs e)
         {
+            statystyki = new Statystyki(opera);
             statystyki.Show();
+        }
+
+        private void buttonLokaty_Click(object sender, EventArgs e)
+        {
+            Lokaty lokaty = new Lokaty();
+            lokaty.Show();
         }
     }
 }

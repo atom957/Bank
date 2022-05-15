@@ -18,7 +18,7 @@ namespace Bank
         public virtual double withdraw(double amount)
         {
             balance -= amount;
-            operations.add("wypłata wyskokosci: " + amount + " balans: "+ balance);
+            operations.add("wypłata " + amount + " balans: "+ balance);
             return amount;
         }
         public virtual double withdraw(int percentage)
@@ -32,7 +32,7 @@ namespace Bank
         public virtual double transfer(double amount)
         {
             balance += amount;
-            operations.add("wpłata wyskokosci: " + amount + " balans: " + balance);
+            operations.add("wpłata " + amount + " balans: " + balance);
             return amount;
         }
         public virtual double tranafer(int percentage)

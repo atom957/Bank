@@ -16,3 +16,4 @@ C:\Users\User\git\Bank\Bank\Bank\obj\Debug\netcoreapp3.1\Bank.genruntimeconfig.c
 C:\Users\User\git\Bank\Bank\Bank\obj\Debug\netcoreapp3.1\Bank.Properties.Resources.resources
 C:\Users\User\git\Bank\Bank\Bank\obj\Debug\netcoreapp3.1\Bank.Logowanie.resources
 C:\Users\User\git\Bank\Bank\Bank\obj\Debug\netcoreapp3.1\Bank.Statystyki.resources
+C:\Users\User\git\Bank\Bank\Bank\obj\Debug\netcoreapp3.1\Bank.Lokaty.resources

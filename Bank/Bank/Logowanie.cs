@@ -42,6 +42,7 @@ namespace Bank
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string[] z = File.ReadAllLines(wscierzka + "\\" + comboBox1.SelectedItem.ToString());
+            string haslo = textBox3.Text;
             if (z[0].Split(" ")[1] == "podstawowe")
             {
                 bank_acount = new BankAccount();
@@ -50,29 +51,36 @@ namespace Bank
             {
                 bank_acount = new BankAccountPremium();
             }
-
-            Form1 form1 = new Form1(comboBox1.SelectedItem.ToString(), bank_acount, wscierzka);
-            if (mainForm == null || (form1 != null && !form1.Visible))
+            if (z[1] == haslo)
             {
-                form1.Show();
-                mainForm = form1;
+                Form1 form1 = new Form1(comboBox1.SelectedItem.ToString(), bank_acount, wscierzka);
+                if (mainForm == null || (form1 != null && !form1.Visible))
+                {
+                    form1.Show();
+                    mainForm = form1;
+                }
+                this.Visible = false;
             }
-            this.Visible = false;
+            else
+            {
+                MessageBox.Show("Niepoprawne haslo");
+            }
         }
 
         private void buttonCreateAcount_Click(object sender, EventArgs e)
         {
             string element = comboBox2.SelectedItem.ToString();
             string nazwa = textBox1.Text;
+            string haslo = textBox2.Text;
             if (element == "Konto Podstawowe")
             {
                 bank_acount = new BankAccount();
-                File.WriteAllText(wscierzka + nazwa+".txt","bank: podstawowe");
+                File.WriteAllText(wscierzka+ "\\" + nazwa+".txt","bank: podstawowe"+ "\n" + haslo+"\n");
             }
             else
             {
                 bank_acount = new BankAccountPremium();
-                File.WriteAllText(wscierzka + nazwa + ".txt", "bank: premium");
+                File.WriteAllText(wscierzka + "\\" + nazwa + ".txt", "bank: premium"+ "\n" + haslo + "\n");
             }
             comboBox1.Items.Clear();
             ladowanie();

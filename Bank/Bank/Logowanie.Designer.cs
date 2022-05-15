@@ -34,6 +34,8 @@ namespace Bank
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonCreateAcount = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -46,7 +48,7 @@ namespace Bank
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(50, 221);
+            this.buttonLogin.Location = new System.Drawing.Point(50, 232);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(285, 23);
             this.buttonLogin.TabIndex = 1;
@@ -77,16 +79,34 @@ namespace Bank
             this.comboBox2.Items.AddRange(new object[] {
             "Konto Podstawowe",
             "Konto Premium"});
-            this.comboBox2.Location = new System.Drawing.Point(50, 52);
+            this.comboBox2.Location = new System.Drawing.Point(50, 23);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(285, 23);
             this.comboBox2.TabIndex = 4;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(50, 52);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
+            this.textBox2.Size = new System.Drawing.Size(285, 23);
+            this.textBox2.TabIndex = 5;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(50, 203);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.PasswordChar = '*';
+            this.textBox3.Size = new System.Drawing.Size(285, 23);
+            this.textBox3.TabIndex = 6;
             // 
             // Logowanie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 359);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.buttonCreateAcount);
             this.Controls.Add(this.textBox1);
@@ -106,5 +126,7 @@ namespace Bank
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonCreateAcount;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
